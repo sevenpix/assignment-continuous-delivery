@@ -1,6 +1,6 @@
 # 01-hello-world
 
-The goal of this assignment to create a Docker container which contains a simple hello-world app made with express.
+The goal of this assignment was to create a Docker container which contains a simple hello-world example made with express.
 
 ### Create Docker container
 
