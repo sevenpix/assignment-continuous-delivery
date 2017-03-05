@@ -1,0 +1,14 @@
+{
+  "name": "01-hello-world",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Mario Taferner",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.0"
+  }
+}
