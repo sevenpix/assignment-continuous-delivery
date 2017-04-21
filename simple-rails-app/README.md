@@ -1,24 +1,13 @@
-# README
+# simple-rails-app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This simple rails app contains contains just users.
 
-Things you may want to cover:
+Start the server with the following command:
+```
+rails server
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+See the users in your browser:
+```
+localhost:3000
+```
