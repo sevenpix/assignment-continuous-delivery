@@ -1,0 +1,58 @@
+resources:
+  - name: git-repository
+    type: git
+    source:
+      uri: "https://github.com/sevenpix/simple-rails-app"
+
+jobs:
+- name: rails-test
+  plan:
+  - get: git-repository
+    trigger: true
+  - task: rails-test
+    config:
+      platform: linux
+
+      inputs:
+      - name: git-repository
+
+      image_resource:
+        type: docker-image
+        source: { repository: ruby, tag: 2.4.1 }
+
+      run:
+        path: sh
+        dir: git-repository
+        args:
+          - -exc
+          - |
+            apt-get update -qq && apt-get install -y build-essential nodejs
+            bundle install
+            rails db:migrate RAILS_ENV=test
+            rails test
+
+- name: brakeman-test
+  plan:
+  - get: git-repository
+    trigger: true
+  - task: brakeman-test
+    config:
+      platform: linux
+
+      inputs:
+      - name: git-repository
+
+      image_resource:
+        type: docker-image
+        source: { repository: ruby, tag: 2.4.1 }
+
+      run:
+        path: sh
+        dir: git-repository
+        args:
+          - -exc
+          - |
+            apt-get update -qq && apt-get install -y build-essential nodejs
+            bundle install
+            rails db:migrate RAILS_ENV=test
+            bundle exec brakeman -z
